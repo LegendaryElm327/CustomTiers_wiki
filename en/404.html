@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Page not found · CustomTiers Wiki</title>
+  <meta name="description" content="The page you are looking for does not exist.">
+  <meta name="theme-color" content="#090c11">
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <script>
+    try {
+      var t = localStorage.getItem("ct-theme");
+      if (t) document.documentElement.dataset.theme = t;
+      else if (window.matchMedia("(prefers-color-scheme: light)").matches) document.documentElement.dataset.theme = "light";
+    } catch (e) {}
+  </script>
+</head>
+<body data-page="404">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header id="site-header"></header>
+
+  <noscript>
+    <div class="noscript-nav">
+      <strong>Navigation:</strong>
+      <a href="index.html">Home</a>
+      <a href="installation.html">Installation</a>
+      <a href="first-item.html">Your first item</a>
+      <a href="arguments.html">Arguments</a>
+      <a href="mmoitems.html">MMOItems</a>
+      <a href="weapons.html">Weapons</a>
+      <a href="armor.html">Armor</a>
+    </div>
+  </noscript>
+
+  <div class="site-shell">
+    <aside id="site-sidebar" aria-label="Main navigation"></aside>
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    <main id="main" class="content" tabindex="-1">
+      <div class="breadcrumb" id="breadcrumb"></div>
+
+      <span class="eyebrow"><span class="eyebrow-dot"></span> Error 404</span>
+      <h1 class="page-title">That page does not exist</h1>
+      <p class="page-lede">
+        The link may be misspelled or the page may have moved.
+      </p>
+
+      <div class="btn-row">
+        <a class="btn btn-primary" href="index.html">Back to home</a>
+        <a class="btn btn-secondary" href="installation.html">Go to installation</a>
+      </div>
+
+    </main>
+
+    <aside class="toc-rail" id="toc-rail" aria-label="On this page"></aside>
+  </div>
+
+  <footer id="site-footer"></footer>
+
+  <script src="../assets/js/site.js"></script>
+</body>
+</html>

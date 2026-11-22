@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Creating armor · CustomTiers Wiki</title>
+  <meta name="description" content="Basic CustomTiers armor, trim armor and shield examples.">
+  <meta name="theme-color" content="#090c11">
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <script>
+    try {
+      var t = localStorage.getItem("ct-theme");
+      if (t) document.documentElement.dataset.theme = t;
+      else if (window.matchMedia("(prefers-color-scheme: light)").matches) document.documentElement.dataset.theme = "light";
+    } catch (e) {}
+  </script>
+</head>
+<body data-page="armadura">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header id="site-header"></header>
+
+  <noscript>
+    <div class="noscript-nav">
+      <strong>Navigation:</strong>
+      <a href="index.html">Home</a>
+      <a href="installation.html">Installation</a>
+      <a href="first-item.html">Your first item</a>
+      <a href="arguments.html">Arguments</a>
+      <a href="mmoitems.html">MMOItems</a>
+      <a href="weapons.html">Weapons</a>
+      <a href="armor.html">Armor</a>
+    </div>
+  </noscript>
+
+  <div class="site-shell">
+    <aside id="site-sidebar" aria-label="Main navigation"></aside>
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    <main id="main" class="content" tabindex="-1">
+      <div class="breadcrumb" id="breadcrumb"></div>
+
+      <span class="eyebrow"><span class="eyebrow-dot"></span> Step 6</span>
+      <h1 class="page-title">Creating armor</h1>
+      <p class="page-lede">
+        Three cases: normal armor, armor with trims and shield. The background works the same way; only the template and model arguments change.
+      </p>
+
+      <h2 id="armor">Armor</h2>
+      <p>For armor with a 2D icon, use <code>armor_generated</code>:</p>
+      <pre data-lang="yaml"><code>items:
+  custom_tiers:my_helmet:
+    material: iron_helmet
+    template:
+    - custom_tiers:tiers
+    arguments:
+      type: armor_generated
+      tiers: 3
+      display: rare
+      icon_path: minecraft:item/iron_helmet</code></pre>
+      <p>
+        <code>icon_path</code> is the 2D icon texture. If you use 3D armor, configure its
+        <code>settings.equipment</code> like any other CraftEngine item.
+      </p>
+
+      <h2 id="trims">Armor with trims</h2>
+      <p>
+        For trims, also add the <code>custom_tiers:asset_id</code> template and the
+        <code>material</code>, <code>part</code> and <code>asset_id</code> arguments:
+      </p>
+      <pre data-lang="yaml"><code>items:
+  custom_tiers:my_trimmed_helmet:
+    material: copper_helmet
+    template:
+    - custom_tiers:tiers
+    - custom_tiers:asset_id
+    arguments:
+      type: trim_armor_generated
+      tiers: 3
+      display: rare
+      icon_path: minecraft:item/custom/topaz_helmet
+      material: topaz
+      part: helmet
+      asset_id: default:topaz</code></pre>
+      <ul>
+        <li><code>material</code> is the trim material, without a namespace.</li>
+        <li><code>part</code>: <code>helmet</code>, <code>chestplate</code>, <code>leggings</code> or <code>boots</code>.</li>
+        <li><code>asset_id</code> is the equipment asset.</li>
+      </ul>
+
+      <h2 id="shield">Shield</h2>
+      <p>
+        The shield uses a normal model and a blocking model. It is not a separate item: the change is resolved
+        with <code>minecraft:using_item</code>.
+      </p>
+      <pre data-lang="yaml"><code>items:
+  custom_tiers:my_shield:
+    material: shield
+    template:
+    - custom_tiers:tiers
+    arguments:
+      type: model_path_shield
+      tiers: 3
+      display: rare
+      model_path: custom_tiers:item/shield
+      model_path_blocking: custom_tiers:item/shield_blocking
+      icon: custom_tiers:item/shield_icon</code></pre>
+      <p>Shield states:</p>
+      <div class="placeholder-row">
+        <div class="placeholder"><img src="../assets/img/placeholder.png" alt="" width="48" height="48"><div><strong>shield.png</strong><span>Normal model (idle).</span></div></div>
+        <div class="placeholder"><img src="../assets/img/placeholder.png" alt="" width="48" height="48"><div><strong>shield_blocking.png</strong><span>Blocking model (using).</span></div></div>
+        <div class="placeholder"><img src="../assets/img/placeholder.png" alt="" width="48" height="48"><div><strong>shield_icon.png</strong><span>16×16 GUI icon.</span></div></div>
+      </div>
+      <p>
+        <code>model_path_blocking</code> is optional: if omitted, <code>model_path</code> is used
+        while blocking. <code>icon</code> is also optional; it defaults to
+        <code>minecraft:item/shield</code>.
+      </p>
+
+      <div class="callout callout-info">
+        <span class="callout-title">No banners</span>
+        <p>
+          This template does not render banner patterns. The shield is a fixed normal model and its
+          blocking version.
+        </p>
+      </div>
+
+      <p class="muted">End of the guide. You can go back to the <a href="index.html">home page</a> or review the <a href="arguments.html">arguments</a>.</p>
+
+      <nav class="page-nav" id="page-nav" aria-label="Previous and next pages"></nav>
+    </main>
+
+    <aside class="toc-rail" id="toc-rail" aria-label="On this page"></aside>
+  </div>
+
+  <footer id="site-footer"></footer>
+
+  <script src="../assets/js/site.js"></script>
+</body>
+</html>

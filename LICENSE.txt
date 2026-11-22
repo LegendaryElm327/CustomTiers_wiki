@@ -1,0 +1,65 @@
+===============================================================================
+                       TERMS OF SERVICE / END USER LICENSE
+                                 CUSTOM_TIERS
+===============================================================================
+
+Effective Date: June 12, 2026
+Original Author: LegendaryElm32753
+Discord Contact: legendaryelm327.
+Project: custom_tiers
+
+-------------------------------------------------------------------------------
+By purchasing, downloading, or using this addon (custom_tiers), you agree to be legally bound by the terms and conditions 
+established in this document.
+-------------------------------------------------------------------------------
+
+1. PERMITTED USE AND LICENSE GRANT
+----------------------------------
+* The Buyer is granted a non-exclusive, non-transferable, and revocable right 
+  to install and use this addon exclusively on Minecraft servers that they 
+  personally own or directly operate as the primary administrator.
+* Running this addon on a server network is permitted, provided that all servers 
+  within the network belong to the same original buyer.
+
+2. REDISTRIBUTION AND RESALE RESTRICTIONS
+-----------------------------------------
+* The redistribution, resale, re-uploading to public or private file-hosting 
+  platforms (such as MediaFire, Mega, Google Drive, public GitHub repositories, 
+  etc.), or sharing of any addon files with third parties is STRICTLY PROHIBITED.
+* This license is strictly for the private and personal use of the buyer. Any 
+  leaks or unauthorized distribution will result in the immediate revocation 
+  of the license, termination of support, and formal reporting on commercial 
+  and Discord platforms.
+
+3. COMPATIBILITY, ADAPTATIONS, AND MODIFICATIONS
+------------------------------------------------
+* This addon is primarily designed to be used with "CraftEngine". The User is 
+  allowed to adapt, modify, or integrate this addon with other plugins or mods, 
+  PROVIDED that such adaptations remain strictly for private use within their 
+  own servers.
+* Distribution of any modified versions, forks, or adaptations of this addon 
+  to third parties is completely prohibited.
+* If the User creates a modification, improvement, or adaptation and wishes to 
+  share it, they must do so EXCLUSIVELY with the original creator of the addon 
+  (LegendaryElm32753) through the official contact channels.
+
+4. MONETIZATION AND COMMERCIAL POLICY (ASSETS VS. CONFIGURATIONS)
+-----------------------------------------------------------------
+* The ONLY permitted method for the User or external creators to monetize or 
+  profit in relation to this addon is by creating and selling original visual 
+  assets/graphics for interfaces backgrounds.
+* It is STRICTLY PROHIBITED to profit from, sell, sub-license, or redistribute 
+  (publicly or privately) the content, structure, layout, or code lines of 
+  the configuration files (.yml) included in this addon.
+
+5. BREACH AND SANCTIONS
+-----------------------
+Any violation of the aforementioned terms will constitute a direct infringement 
+of LegendaryElm32753's intellectual property and copyrights. The author 
+reserves the right to take appropriate technical and legal actions, including 
+denial of support, blocking access to future updates, and filing DMCA takedown 
+notices with relevant hosting or distribution platforms.
+
+===============================================================================
+     Thank you for respecting the developer's work and supporting the community.
+===============================================================================

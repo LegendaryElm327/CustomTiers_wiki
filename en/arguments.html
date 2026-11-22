@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Basic arguments · CustomTiers Wiki</title>
+  <meta name="description" content="Common CustomTiers arguments: type, tiers, display and tier_1…tier_7.">
+  <meta name="theme-color" content="#090c11">
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <script>
+    try {
+      var t = localStorage.getItem("ct-theme");
+      if (t) document.documentElement.dataset.theme = t;
+      else if (window.matchMedia("(prefers-color-scheme: light)").matches) document.documentElement.dataset.theme = "light";
+    } catch (e) {}
+  </script>
+</head>
+<body data-page="argumentos">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header id="site-header"></header>
+
+  <noscript>
+    <div class="noscript-nav">
+      <strong>Navigation:</strong>
+      <a href="index.html">Home</a>
+      <a href="installation.html">Installation</a>
+      <a href="first-item.html">Your first item</a>
+      <a href="arguments.html">Arguments</a>
+      <a href="mmoitems.html">MMOItems</a>
+      <a href="weapons.html">Weapons</a>
+      <a href="armor.html">Armor</a>
+    </div>
+  </noscript>
+
+  <div class="site-shell">
+    <aside id="site-sidebar" aria-label="Main navigation"></aside>
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    <main id="main" class="content" tabindex="-1">
+      <div class="breadcrumb" id="breadcrumb"></div>
+
+      <span class="eyebrow"><span class="eyebrow-dot"></span> Step 3</span>
+      <h1 class="page-title">Basic arguments</h1>
+      <p class="page-lede">
+        All templates use the <code>custom_tiers:tiers</code> formatter. These are the arguments you can pass to it.
+      </p>
+
+      <h2 id="common">Common arguments</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Argument</th><th>Required</th><th>Description</th></tr></thead>
+          <tbody>
+            <tr><td><code>type</code></td><td>Yes</td><td>Which template is used: <code>model_path</code>, <code>model_path_bow</code>, <code>model_path_crossbow</code>, etc.</td></tr>
+            <tr><td><code>tiers</code></td><td>Yes</td><td>Number of possible tiers, from 1 to 7. (Use only the ones you need.)</td></tr>
+            <tr><td><code>display</code></td><td>No</td><td>Tier shown by default. If omitted, there is no background until the <code>MMOITEMS_TIER</code> key gets an existing value.</td></tr>
+            <tr><td><code>tier_1</code> … <code>tier_7</code></td><td>No</td><td>Name of each tier. Defaults: <code>common</code>, <code>uncommon</code>, <code>rare</code>, <code>epic</code>, <code>legendary</code>, <code>mythic</code>, <code>unique</code>. You can rename the 7 slots to your liking.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 id="example">Full example</h2>
+      <pre data-lang="yaml"><code>items:
+  custom_tiers:my_sword:
+    material: diamond_sword
+    template:
+    - custom_tiers:tiers
+    arguments:
+      type: model_path
+      tiers: 3
+      display: rare
+      tier_1: rare
+      tier_2: legendary
+      tier_3: unique
+      model_path: minecraft:item/diamond_sword</code></pre>
+
+      <p>
+        The formatter creates an item with 3 possible tiers: <code>rare</code>, <code>legendary</code> and <code>unique</code>.
+      </p>
+
+      <h2 id="display">About display and tiers</h2>
+      <p>
+        <code>tiers</code> defines how many values the item accepts. <code>display</code> is the
+        concrete value written to <code>MMOITEMS_TIER</code>.
+      </p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Configuration</th><th>Result</th></tr></thead>
+          <tbody>
+            <tr><td><code>tiers: 3</code> + <code>display: rare</code></td><td>The item starts with the <code>RARE</code> tier hardcoded if you get it from CraftEngine.</td></tr>
+            <tr><td><code>tiers: 3</code> + <code>display: uncommon</code></td><td>No background. In the previous example we did <b>NOT</b> define <code>uncommon</code> as a possible tier.</td></tr>
+            <tr><td>No <code>display</code></td><td>The item shows no background until another plugin writes <code>MMOITEMS_TIER</code>.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 id="types">Available types</h2>
+      <ul>
+        <li><code>model_path</code> — Existing model (food, block, etc.).</li>
+        <li><code>model_path_bow</code> — Bow.</li>
+        <li><code>model_path_crossbow</code> — Crossbow.</li>
+        <li><code>model_path_fishing_rod</code> — Fishing rod.</li>
+        <li><code>model_path_shield</code> — Normal shield with blocking (no banner patterns).</li>
+        <li><code>trident_model_path</code> / <code>trident_auto</code> — Working trident.</li>
+        <li><code>armor_generated</code> — Armor without trims.</li>
+        <li><code>trim_armor_generated</code> — Armor with trims.</li>
+      </ul>
+      <p>
+        Examples for each type are in <a href="weapons.html">Creating weapons</a> and
+        <a href="armor.html">Creating armor</a>.
+      </p>
+
+      <p class="muted">Next: connect the item with MMOItems.</p>
+
+      <nav class="page-nav" id="page-nav" aria-label="Previous and next pages"></nav>
+    </main>
+
+    <aside class="toc-rail" id="toc-rail" aria-label="On this page"></aside>
+  </div>
+
+  <footer id="site-footer"></footer>
+
+  <script src="../assets/js/site.js"></script>
+</body>
+</html>

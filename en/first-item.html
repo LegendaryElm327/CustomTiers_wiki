@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Your first item · CustomTiers Wiki</title>
+  <meta name="description" content="Create your first item with a tier background using the CustomTiers model_path template.">
+  <meta name="theme-color" content="#090c11">
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <script>
+    try {
+      var t = localStorage.getItem("ct-theme");
+      if (t) document.documentElement.dataset.theme = t;
+      else if (window.matchMedia("(prefers-color-scheme: light)").matches) document.documentElement.dataset.theme = "light";
+    } catch (e) {}
+  </script>
+</head>
+<body data-page="primer-item">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header id="site-header"></header>
+
+  <noscript>
+    <div class="noscript-nav">
+      <strong>Navigation:</strong>
+      <a href="index.html">Home</a>
+      <a href="installation.html">Installation</a>
+      <a href="first-item.html">Your first item</a>
+      <a href="arguments.html">Arguments</a>
+      <a href="mmoitems.html">MMOItems</a>
+      <a href="weapons.html">Weapons</a>
+      <a href="armor.html">Armor</a>
+    </div>
+  </noscript>
+
+  <div class="site-shell">
+    <aside id="site-sidebar" aria-label="Main navigation"></aside>
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    <main id="main" class="content" tabindex="-1">
+      <div class="breadcrumb" id="breadcrumb"></div>
+
+      <span class="eyebrow"><span class="eyebrow-dot"></span> Step 2</span>
+      <h1 class="page-title">Create your first item</h1>
+      <p class="page-lede">
+        For an existing model, use the <code>model_path</code> template. You only need the item&rsquo;s base model and the tier arguments.
+      </p>
+
+      <h2 id="template">The template</h2>
+      <p>Create a file in <code>configuration/items/</code> with this content:</p>
+      <pre data-lang="yaml"><code>items:
+  NAMESPACE:ID:          # This is the ID used in MMOITEMS (item_model)
+    material: diamond_sword
+    template:
+    - custom_tiers:tiers # Always the same template
+    arguments:
+      type: model_path   # Template for existing models
+      tiers: 3           # Number of rarities; default 1=COMMON, 2=UNCOMMON, 3=RARE
+      #tier_1: RARE
+      #tier_2: EPIC      # If you uncomment these 3 lines, those will be the 3 possible tiers
+      #tier_3: LEGENDARY
+      display: rare      # Tier shown by CustomTiers
+      model_path: minecraft:item/diamond_sword # Model path</code></pre>
+
+      <h2 id="arguments">The example arguments</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Argument</th><th>What it does</th></tr></thead>
+          <tbody>
+            <tr><td><code>template: custom_tiers:tiers</code></td><td>Enables the addon&rsquo;s tier formatter.</td></tr>
+            <tr><td><code>type: model_path</code></td><td>Uses the template for existing models.</td></tr>
+            <tr><td><code>tiers: 3</code></td><td>The item supports 3 tiers: by default common, uncommon and rare.</td></tr>
+            <tr><td><code>display: rare</code></td><td>The tier shown by default.</td></tr>
+            <tr><td><code>model_path</code></td><td>A model path (not a texture path).</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>After saving:</p>
+      <pre data-lang="bash"><code>/ce reload all
+/ce item get NAMESPACE:ID</code></pre>
+
+      <h2 id="states">Item states</h2>
+      <p>
+        The background changes depending on the context.
+      </p>
+      <div class="placeholder-row">
+        <div class="placeholder">
+          <img src="../assets/img/model_path_default.png" alt="" width="48" height="48">
+          <div><strong>Default</strong><span>Normal inventory.</span></div>
+        </div>
+        <div class="placeholder">
+          <img src="../assets/img/model_path_selected.png" alt="" width="48" height="48">
+          <div><strong>Selected</strong><span>Item selected in the hotbar.</span></div>
+        </div>
+        <div class="placeholder">
+          <img src="../assets/img/model_path_carried.png" alt="" width="48" height="48">
+          <div><strong>Carried</strong><span>Moving inside the inventory.</span></div>
+        </div>
+      </div>
+
+      <div class="callout callout-info">
+        <span class="callout-title">Custom texture?</span>
+        <p>
+          <code>model_path</code> points to an existing model. If you want a new texture, create a model with
+          <code>"parent": "minecraft:item/generated"</code> and use its path as <code>model_path</code>.
+        </p>
+      </div>
+
+      <p class="muted">Next: the arguments shared by all templates.</p>
+
+      <nav class="page-nav" id="page-nav" aria-label="Previous and next pages"></nav>
+    </main>
+
+    <aside class="toc-rail" id="toc-rail" aria-label="On this page"></aside>
+  </div>
+
+  <footer id="site-footer"></footer>
+
+  <script src="../assets/js/site.js"></script>
+</body>
+</html>

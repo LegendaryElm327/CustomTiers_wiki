@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Creación de armadura · CustomTiers Wiki</title>
+  <meta name="description" content="Ejemplos básicos de armadura, armadura con trims y escudo con CustomTiers.">
+  <meta name="theme-color" content="#090c11">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script>
+    try {
+      var t = localStorage.getItem("ct-theme");
+      if (t) document.documentElement.dataset.theme = t;
+      else if (window.matchMedia("(prefers-color-scheme: light)").matches) document.documentElement.dataset.theme = "light";
+    } catch (e) {}
+  </script>
+</head>
+<body data-page="armadura">
+  <a class="skip-link" href="#main">Saltar al contenido</a>
+  <header id="site-header"></header>
+
+  <noscript>
+    <div class="noscript-nav">
+      <strong>Navegación:</strong>
+      <a href="index.html">Inicio</a>
+      <a href="instalacion.html">Instalación</a>
+      <a href="primer-item.html">Tu primer item</a>
+      <a href="argumentos.html">Argumentos</a>
+      <a href="mmoitems.html">MMOItems</a>
+      <a href="armas.html">Armas</a>
+      <a href="armadura.html">Armadura</a>
+    </div>
+  </noscript>
+
+  <div class="site-shell">
+    <aside id="site-sidebar" aria-label="Navegación principal"></aside>
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    <main id="main" class="content" tabindex="-1">
+      <div class="breadcrumb" id="breadcrumb"></div>
+
+      <span class="eyebrow"><span class="eyebrow-dot"></span> Paso 6</span>
+      <h1 class="page-title">Creación de armadura</h1>
+      <p class="page-lede">
+        Tres casos: armadura normal, armadura con trims y escudo. El fondo funciona igual; cambia
+        la plantilla y los argumentos del modelo.
+      </p>
+
+      <h2 id="armadura">Armadura</h2>
+      <p>Para una armadura con icono 2D usa <code>armor_generated</code>:</p>
+      <pre data-lang="yaml"><code>items:
+  custom_tiers:mi_casco:
+    material: iron_helmet
+    template:
+    - custom_tiers:tiers
+    arguments:
+      type: armor_generated
+      tiers: 3
+      display: rare
+      icon_path: minecraft:item/iron_helmet</code></pre>
+      <p>
+        <code>icon_path</code> es la textura 2D del icono. Si usas una armadura 3D, configura su
+        <code>settings.equipment</code> como en cualquier item de CraftEngine.
+      </p>
+
+      <h2 id="trims">Armadura con trims</h2>
+      <p>
+        Para trims, añade también la plantilla <code>custom_tiers:asset_id</code> y los argumentos
+        <code>material</code>, <code>part</code> y <code>asset_id</code>:
+      </p>
+      <pre data-lang="yaml"><code>items:
+  custom_tiers:mi_casco_trim:
+    material: copper_helmet
+    template:
+    - custom_tiers:tiers
+    - custom_tiers:asset_id
+    arguments:
+      type: trim_armor_generated
+      tiers: 3
+      display: rare
+      icon_path: minecraft:item/custom/topaz_helmet
+      material: topaz
+      part: helmet
+      asset_id: default:topaz</code></pre>
+      <ul>
+        <li><code>material</code> es el material del trim, sin namespace.</li>
+        <li><code>part</code>: <code>helmet</code>, <code>chestplate</code>, <code>leggings</code> o <code>boots</code>.</li>
+        <li><code>asset_id</code> es el asset de equipamiento.</li>
+      </ul>
+
+      <h2 id="escudo">Escudo</h2>
+      <p>
+        El escudo usa un modelo normal y otro al bloquear. No es un item aparte: el cambio se resuelve
+        con <code>minecraft:using_item</code>.
+      </p>
+      <pre data-lang="yaml"><code>items:
+  custom_tiers:mi_escudo:
+    material: shield
+    template:
+    - custom_tiers:tiers
+    arguments:
+      type: model_path_shield
+      tiers: 3
+      display: rare
+      model_path: custom_tiers:item/shield
+      model_path_blocking: custom_tiers:item/shield_blocking
+      icon: custom_tiers:item/shield_icon</code></pre>
+      <p>Estados del escudo:</p>
+      <div class="placeholder-row">
+        <div class="placeholder"><img src="assets/img/placeholder.png" alt="" width="48" height="48"><div><strong>shield.png</strong><span>Modelo normal (idle).</span></div></div>
+        <div class="placeholder"><img src="assets/img/placeholder.png" alt="" width="48" height="48"><div><strong>shield_blocking.png</strong><span>Modelo al bloquear (using).</span></div></div>
+        <div class="placeholder"><img src="assets/img/placeholder.png" alt="" width="48" height="48"><div><strong>shield_icon.png</strong><span>Icono 16×16 de la GUI.</span></div></div>
+      </div>
+      <p>
+        <code>model_path_blocking</code> es opcional: si lo omites, se usa <code>model_path</code>
+        también al bloquear. <code>icon</code> también es opcional; por defecto se usa
+        <code>minecraft:item/shield</code>.
+      </p>
+
+      <div class="callout callout-info">
+        <span class="callout-title">Sin estandartes</span>
+        <p>
+          Esta plantilla no renderiza patrones de estandarte. El escudo es un modelo fijo normal y su
+          versión de bloqueo.
+        </p>
+      </div>
+
+      <p class="muted">Fin de la guía. Puedes volver al <a href="index.html">inicio</a> o revisar los <a href="argumentos.html">argumentos</a>.</p>
+      <nav class="page-nav" id="page-nav" aria-label="Páginas anterior y siguiente"></nav>
+    </main>
+
+    <aside class="toc-rail" id="toc-rail" aria-label="En esta página"></aside>
+  </div>
+
+  <footer id="site-footer"></footer>
+
+  <script src="assets/js/site.js"></script>
+</body>
+</html>

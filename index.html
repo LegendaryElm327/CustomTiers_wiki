@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CustomTiers Wiki</title>
+  <meta name="description" content="Guía básica de CustomTiers: instalación, primer item, argumentos, MMOItems, armas y armadura.">
+  <meta name="theme-color" content="#090c11">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script>
+    try {
+      var t = localStorage.getItem("ct-theme");
+      if (t) document.documentElement.dataset.theme = t;
+      else if (window.matchMedia("(prefers-color-scheme: light)").matches) document.documentElement.dataset.theme = "light";
+    } catch (e) {}
+  </script>
+</head>
+<body data-page="index">
+  <a class="skip-link" href="#main">Saltar al contenido</a>
+  <header id="site-header"></header>
+
+  <noscript>
+    <div class="noscript-nav">
+      <strong>Navegación:</strong>
+      <a href="instalacion.html">Instalación</a>
+      <a href="primer-item.html">Tu primer item</a>
+      <a href="argumentos.html">Argumentos</a>
+      <a href="mmoitems.html">MMOItems</a>
+      <a href="armas.html">Armas</a>
+      <a href="armadura.html">Armadura</a>
+    </div>
+  </noscript>
+
+  <div class="site-shell">
+    <aside id="site-sidebar" aria-label="Navegación principal"></aside>
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    <main id="main" class="content" tabindex="-1">
+      <div class="breadcrumb" id="breadcrumb"></div>
+
+      <span class="eyebrow"><span class="eyebrow-dot"></span> Guía básica</span>
+      <h1 class="page-title">CustomTiers Wiki</h1>
+      <p class="page-lede">
+        Instalación, argumentos y ejemplos mínimos para crear items con fondo de rareza (tier) en CraftEngine.
+      </p>
+
+      <div class="btn-row">
+        <a class="btn btn-primary" href="instalacion.html">Empezar por la instalación</a>
+        <a class="btn btn-secondary" href="armas.html">Ver ejemplos de armas</a>
+      </div>
+
+      <h2 id="contenido">Contenido</h2>
+      <ol>
+        <li><a href="instalacion.html">Instalación</a> — Copiar la carpeta y recargar.</li>
+        <li><a href="primer-item.html">Tu primer item</a> — La plantilla y el YAML mínimo.</li>
+        <li><a href="argumentos.html">Argumentos básicos</a> — Qué significa cada campo.</li>
+        <li><a href="mmoitems.html">MMOItems</a> — Conectar el item model con el mismo namespace:ID.</li>
+        <li><a href="armas.html">Creación de armas</a> — Espada, arco, ballesta, tridente, comida y bloques.</li>
+        <li><a href="armadura.html">Creación de armadura</a> — Armadura, trims y escudo.</li>
+      </ol>
+      <nav class="page-nav" id="page-nav" aria-label="Páginas anterior y siguiente"></nav>
+    </main>
+    <aside class="toc-rail" id="toc-rail" aria-label="En esta página"></aside>
+  </div>
+
+  <footer id="site-footer"></footer>
+
+  <script src="assets/js/site.js"></script>
+</body>
+</html>

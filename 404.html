@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Página no encontrada · CustomTiers Wiki</title>
+  <meta name="description" content="La página que buscas no existe.">
+  <meta name="theme-color" content="#090c11">
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script>
+    try {
+      var t = localStorage.getItem("ct-theme");
+      if (t) document.documentElement.dataset.theme = t;
+      else if (window.matchMedia("(prefers-color-scheme: light)").matches) document.documentElement.dataset.theme = "light";
+    } catch (e) {}
+  </script>
+</head>
+<body data-page="404">
+  <a class="skip-link" href="#main">Saltar al contenido</a>
+  <header id="site-header"></header>
+
+  <div class="site-shell">
+    <aside id="site-sidebar" aria-label="Navegación principal"></aside>
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    <main id="main" class="content" tabindex="-1">
+      <div class="breadcrumb" id="breadcrumb"></div>
+      <span class="eyebrow"><span class="eyebrow-dot"></span> Error 404</span>
+      <h1 class="page-title">Esa página no existe</h1>
+      <p class="page-lede">Puede que el enlace esté mal escrito o que la página se haya movido.</p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="index.html">Volver al inicio</a>
+        <a class="btn btn-secondary" href="instalacion.html">Ir a instalación</a>
+      </div>
+    </main>
+
+    <aside class="toc-rail" id="toc-rail" aria-label="En esta página"></aside>
+  </div>
+
+  <footer id="site-footer"></footer>
+
+  <script src="assets/js/site.js"></script>
+</body>
+</html>

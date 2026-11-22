@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MMOItems · CustomTiers Wiki</title>
+  <meta name="description" content="Cómo conectar un item de CustomTiers con MMOItems usando el mismo namespace:ID del item model de CraftEngine.">
+  <meta name="theme-color" content="#090c11">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script>
+    try {
+      var t = localStorage.getItem("ct-theme");
+      if (t) document.documentElement.dataset.theme = t;
+      else if (window.matchMedia("(prefers-color-scheme: light)").matches) document.documentElement.dataset.theme = "light";
+    } catch (e) {}
+  </script>
+</head>
+<body data-page="mmoitems">
+  <a class="skip-link" href="#main">Saltar al contenido</a>
+  <header id="site-header"></header>
+
+  <noscript>
+    <div class="noscript-nav">
+      <strong>Navegación:</strong>
+      <a href="index.html">Inicio</a>
+      <a href="instalacion.html">Instalación</a>
+      <a href="primer-item.html">Tu primer item</a>
+      <a href="argumentos.html">Argumentos</a>
+      <a href="mmoitems.html">MMOItems</a>
+      <a href="armas.html">Armas</a>
+      <a href="armadura.html">Armadura</a>
+    </div>
+  </noscript>
+
+  <div class="site-shell">
+    <aside id="site-sidebar" aria-label="Navegación principal"></aside>
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    <main id="main" class="content" tabindex="-1">
+      <div class="breadcrumb" id="breadcrumb"></div>
+
+      <span class="eyebrow"><span class="eyebrow-dot"></span> Paso 4</span>
+      <h1 class="page-title">Conectar con MMOItems</h1>
+      <p class="page-lede">
+        La conexión es simple: creas el item en CraftEngine y, en MMOItems, seleccionas ese item
+        model usando el mismo <code>namespace:ID</code>.
+      </p>
+
+      <h2 id="crear">1. Crea el item en CraftEngine</h2>
+      <p>Primero debe existir el item y su modelo. Por ejemplo:</p>
+      <pre data-lang="yaml"><code>items:
+  custom_tiers:mi_espada:
+    material: diamond_sword
+    template:
+    - custom_tiers:tiers
+    arguments:
+      type: model_path
+      tiers: 3
+      display: rare
+      model_path: minecraft:item/diamond_sword</code></pre>
+      <p>Recarga y comprueba que el item se puede dar:</p>
+      <pre data-lang="bash"><code>/ce reload all
+/ce item get custom_tiers:mi_espada</code></pre>
+
+      <h2 id="seleccionar">2. Selecciona el item model en MMOItems</h2>
+      <p>
+        En la configuración del item de MMOItems, selecciona el item model de CraftEngine. Lo único
+        importante es que el <code>namespace:ID</code> sea exactamente el mismo:
+      </p>
+      <div class="placeholder">
+        <img src="assets/img/handheld_default.png" alt="Placeholder de imagen" width="48" height="48">
+        <div>
+          <strong>
+            item_model: custom_tiers:mi_espada</strong>
+        </div>
+      </div>
+      <ul>
+        <li><code>custom_tiers</code> es el namespace del pack.</li>
+        <li><code>mi_espada</code> es el ID del item que creaste.</li>
+      </ul>
+
+      <h2 id="tier">3. Escribe el tier</h2>
+      <p>
+        El fondo se muestra cuando el item tiene <code>MMOITEMS_TIER</code> con un valor que coincida
+        con uno de los tiers configurados. Puedes:
+      </p>
+      <ul>
+        <li>Dejar un tier fijo con <code>display</code> en CraftEngine, o hacer que MMOItems escriba <code>MMOITEMS_TIER</code></li>
+      </ul>
+      <pre data-lang="yaml"><code>KATANA:
+  base:
+    material: DIAMOND_SWORD
+    name: '&fKatana'
+    item_model: custom_tiers:mi_espada     # IMPORTANTE
+  modifiers:
+    critical_strike_group:
+      min: 1
+      max: 1
+      modifiers:                      # Es importante añadir los modifiers o caso 
+        mod_common:                   # contrario no habrá rarezas.
+          chance: 0.4
+          stats:
+            tier: COMMON
+            critical-strike-chance: 5
+        mod_uncommon:
+          chance: 0.3
+          stats:
+            tier: UNCOMMON
+            critical-strike-chance: 10
+        mod_rare:
+          chance: 0.3
+          stats:
+            tier: RARE
+            critical-strike-chance: 15</code></pre>
+      <div class="callout callout-warning">
+        <span class="callout-title">El ID debe coincidir</span>
+        <p>
+          Verifica que tu item model sea correcto antes de solicitar ayuda.
+        </p>
+      </div>
+
+      <p class="muted">Siguiente: ejemplos de armas.</p>
+      <nav class="page-nav" id="page-nav" aria-label="Páginas anterior y siguiente"></nav>
+    </main>
+
+    <aside class="toc-rail" id="toc-rail" aria-label="En esta página"></aside>
+  </div>
+
+  <footer id="site-footer"></footer>
+
+  <script src="assets/js/site.js"></script>
+</body>
+</html>

@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Creating weapons · CustomTiers Wiki</title>
+  <meta name="description" content="Basic CustomTiers weapon examples: sword, bow, crossbow, trident, food and blocks.">
+  <meta name="theme-color" content="#090c11">
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <script>
+    try {
+      var t = localStorage.getItem("ct-theme");
+      if (t) document.documentElement.dataset.theme = t;
+      else if (window.matchMedia("(prefers-color-scheme: light)").matches) document.documentElement.dataset.theme = "light";
+    } catch (e) {}
+  </script>
+</head>
+<body data-page="armas">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header id="site-header"></header>
+
+  <noscript>
+    <div class="noscript-nav">
+      <strong>Navigation:</strong>
+      <a href="index.html">Home</a>
+      <a href="installation.html">Installation</a>
+      <a href="first-item.html">Your first item</a>
+      <a href="arguments.html">Arguments</a>
+      <a href="mmoitems.html">MMOItems</a>
+      <a href="weapons.html">Weapons</a>
+      <a href="armor.html">Armor</a>
+    </div>
+  </noscript>
+
+  <div class="site-shell">
+    <aside id="site-sidebar" aria-label="Main navigation"></aside>
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    <main id="main" class="content" tabindex="-1">
+      <div class="breadcrumb" id="breadcrumb"></div>
+
+      <span class="eyebrow"><span class="eyebrow-dot"></span> Step 5</span>
+      <h1 class="page-title">Creating weapons</h1>
+      <p class="page-lede">
+        Minimal examples by item type. All of them share <code>type</code>, <code>tiers</code> and <code>display</code>; only the template and model arguments change.
+      </p>
+
+      <h2 id="sword">Sword (handheld item)</h2>
+      <p>A normal sword uses the <code>model_path</code> template and a handheld model:</p>
+      <pre data-lang="yaml"><code>items:
+  custom_tiers:my_sword:
+    material: diamond_sword
+    template:
+    - custom_tiers:tiers
+    arguments:
+      type: model_path
+      tiers: 3
+      display: rare
+      model_path: minecraft:item/diamond_sword</code></pre>
+      <p>
+        If you use a custom sword model, its JSON must have <code>"parent": "minecraft:item/handheld"</code>.
+      </p>
+
+      <h2 id="bow">Bow</h2>
+      <p>A bow uses the normal model and three pulling states:</p>
+      <pre data-lang="yaml"><code>items:
+  custom_tiers:my_bow:
+    material: bow
+    template:
+    - custom_tiers:tiers
+    arguments:
+      type: model_path_bow
+      tiers: 3
+      display: rare
+      model_path: minecraft:item/bow</code></pre>
+      <div class="placeholder-row">
+        <div class="placeholder"><img src="../assets/img/default_bow.png" alt="" width="48" height="48"><div><strong>model_path</strong><span>Normal.</span></div></div>
+        <div class="placeholder"><img src="../assets/img/default_bow_pulling_0.png" alt="" width="48" height="48"><div><strong>model_path_pulling_0</strong><span>Early pull.</span></div></div>
+        <div class="placeholder"><img src="../assets/img/default_bow_pulling_1.png" alt="" width="48" height="48"><div><strong>model_path_pulling_1</strong><span>Mid pull.</span></div></div>
+        <div class="placeholder"><img src="../assets/img/default_bow_pulling_2.png" alt="" width="48" height="48"><div><strong>model_path_pulling_2</strong><span>Full pull.</span></div></div>
+      </div>
+      <div class="callout callout-warning">
+        <span class="callout-title">Do you need to define the pulling models?</span>
+        <p>Add these 3 lines:</p>
+      </div>
+      <pre><code>    arguments:
+      pulling_0: minecraft:item/bow_pulling_0
+      pulling_1: minecraft:item/bow_pulling_1 # the addon auto-completes them with
+      pulling_2: minecraft:item/bow_pulling_2 # "model_path" + "_pulling_<0-2>"
+      # ALIAS
+      # model_path_pulling_X: minecraft:item/bow_pulling_X
+      </code></pre>
+
+      <h2 id="crossbow">Crossbow</h2>
+      <p>The crossbow adds the loaded-with-arrow and loaded-with-firework states:</p>
+      <pre data-lang="yaml"><code>items:
+  custom_tiers:my_crossbow:
+    material: crossbow
+    template:
+    - custom_tiers:tiers
+    arguments:
+      type: model_path_crossbow
+      tiers: 3
+      display: rare
+      model_path: minecraft:item/crossbow</code></pre>
+      <div class="placeholder-row">
+        <div class="placeholder"><img src="../assets/img/crossbow_standby.png" alt="" width="48" height="48"><div><strong>model_path.png</strong><span>Normal.</span></div></div>
+        <div class="placeholder"><img src="../assets/img/crossbow_pulling_0.png" alt="" width="48" height="48"><div><strong>pulling_0.png</strong><span>Early pull.</span></div></div>
+        <div class="placeholder"><img src="../assets/img/crossbow_pulling_1.png" alt="" width="48" height="48"><div><strong>pulling_1.png</strong><span>Mid pull.</span></div></div>
+        <div class="placeholder"><img src="../assets/img/crossbow_pulling_2.png" alt="" width="48" height="48"><div><strong>pulling_2.png</strong><span>Full pull.</span></div></div>
+        <div class="placeholder"><img src="../assets/img/crossbow_arrow.png" alt="" width="48" height="48"><div><strong>arrow.png</strong><span>Loaded with arrow.</span></div></div>
+        <div class="placeholder"><img src="../assets/img/crossbow_firework.png" alt="" width="48" height="48"><div><strong>firework.png</strong><span>Loaded with firework.</span></div></div>
+      </div>
+      <div class="callout callout-warning">
+        <span class="callout-title">Do you need to define a model?</span>
+        <p>Add these arguments as needed:</p>
+      </div>
+      <pre><code>arguments:
+  arrow: minecraft:item/crossbow_arrow
+  firework: minecraft:item/crossbow_firework
+  pulling_0: minecraft:item/crossbow_pulling_0
+  pulling_1: minecraft:item/crossbow_pulling_1
+  pulling_2: minecraft:item/crossbow_pulling_2
+  # ALIAS
+  #model_path_arrow: minecraft:item/crossbow_arrow
+  #model_path_firework: minecraft:item/crossbow_firework
+  #model_path_pulling_X: minecraft:item/crossbow_pulling_X
+      </code></pre>
+
+      <h2 id="trident">Trident</h2>
+      <p>For a trident with existing models:</p>
+      <pre data-lang="yaml"><code>items:
+  custom_tiers:my_trident:
+    material: trident
+    template:
+    - custom_tiers:tiers
+    arguments:
+      type: trident_model_path
+      tiers: 3
+      display: rare
+      model_path: custom_tiers:item/my_trident</code></pre>
+      <p>
+        If you prefer to generate it from a texture, use <code>type: trident_auto</code> with
+        <code>texture</code> and <code>icon</code>.
+      </p>
+      <div class="callout callout-warning">
+        <span class="callout-title">Need something more specific?</span>
+        <p>Add these arguments as needed:</p>
+      </div>
+      <pre><code>    arguments:
+      throwing: custom_tiers:item/my_trident_throwing
+      in_hand: custom_tiers:item/my_trident_in_hand
+      icon: custom_tiers:item/my_trident_icon
+      max_damage: 300
+      # ALIAS
+      #model_path_throwing: custom_tiers:item/my_trident_throwing
+      #model_path_in_hand: custom_tiers:item/my_trident_in_hand
+
+      # if no icon model is specified, model_path is used
+      #model_path_icon: custom_tiers:item/my_trident_icon</pre>
+
+      <h2 id="food">Food (item/generated)</h2>
+      <p>For food with a normal 2D icon:</p>
+      <pre data-lang="yaml"><code>items:
+  custom_tiers:my_food:
+    material: apple
+    template:
+    - custom_tiers:tiers
+    arguments:
+      type: model_path
+      tiers: 3
+      display: rare
+      model_path: minecraft:item/apple</code></pre>
+      <p>If you use your own texture, create a 2D model and pass it as <code>model_path</code>:</p>
+      <pre data-lang="json"><code>{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "custom_tiers:item/my_food"
+  }
+}</code></pre>
+
+      <h2 id="blocks">Blocks (model path)</h2>
+      <p>A block uses its block model as <code>model_path</code>:</p>
+      <pre data-lang="yaml"><code>items:
+  custom_tiers:my_block:
+    material: stone
+    template:
+    - custom_tiers:tiers
+    arguments:
+      type: model_path
+      tiers: 3
+      display: rare
+      model_path: minecraft:block/stone</code></pre>
+      <p class="muted">Next: armor, trims and shield.</p>
+
+      <nav class="page-nav" id="page-nav" aria-label="Previous and next pages"></nav>
+    </main>
+
+    <aside class="toc-rail" id="toc-rail" aria-label="On this page"></aside>
+  </div>
+
+  <footer id="site-footer"></footer>
+
+  <script src="../assets/js/site.js"></script>
+</body>
+</html>

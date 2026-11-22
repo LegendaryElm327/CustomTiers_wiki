@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Installation · CustomTiers Wiki</title>
+  <meta name="description" content="How to install CustomTiers in CraftEngine: copy the folder and reload.">
+  <meta name="theme-color" content="#090c11">
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <script>
+    try {
+      var t = localStorage.getItem("ct-theme");
+      if (t) document.documentElement.dataset.theme = t;
+      else if (window.matchMedia("(prefers-color-scheme: light)").matches) document.documentElement.dataset.theme = "light";
+    } catch (e) {}
+  </script>
+</head>
+<body data-page="instalacion">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header id="site-header"></header>
+
+  <noscript>
+    <div class="noscript-nav">
+      <strong>Navigation:</strong>
+      <a href="index.html">Home</a>
+      <a href="installation.html">Installation</a>
+      <a href="first-item.html">Your first item</a>
+      <a href="arguments.html">Arguments</a>
+      <a href="mmoitems.html">MMOItems</a>
+      <a href="weapons.html">Weapons</a>
+      <a href="armor.html">Armor</a>
+    </div>
+  </noscript>
+
+  <div class="site-shell">
+    <aside id="site-sidebar" aria-label="Main navigation"></aside>
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    <main id="main" class="content" tabindex="-1">
+      <div class="breadcrumb" id="breadcrumb"></div>
+
+      <span class="eyebrow"><span class="eyebrow-dot"></span> Step 1</span>
+      <h1 class="page-title">Installation</h1>
+      <p class="page-lede">
+        Copy the addon folder into CraftEngine's resources folder and reload.
+      </p>
+
+      <h2 id="copy">Step #1</h2>
+      <p>
+        Copy the <code>CustomTiers_CraftEngine</code> folder into:
+      </p>
+      <pre data-lang="text"><code>plugins/CraftEngine/resources/</code></pre>
+      <p>The structure should look like this:</p>
+      <pre data-lang="text"><code>plugins/
+└── CraftEngine/
+    └── resources/
+        └── CustomTiers_CraftEngine/
+            ├── pack.yml
+            ├── configuration/
+            └── resourcepack/</code></pre>
+
+      <h2 id="reload">Step #2</h2>
+      <p>If the server is running:</p>
+      <pre data-lang="bash"><code>/ce reload all</code></pre>
+
+      <p class="muted">Next: create your first item with the <code>model_path</code> template.</p>
+
+      <nav class="page-nav" id="page-nav" aria-label="Previous and next pages"></nav>
+    </main>
+
+    <aside class="toc-rail" id="toc-rail" aria-label="On this page"></aside>
+  </div>
+
+  <footer id="site-footer"></footer>
+
+  <script src="../assets/js/site.js"></script>
+</body>
+</html>
